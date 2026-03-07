@@ -153,6 +153,7 @@ namespace Proyecto;
         //credentials["project_id"]: acceder a la propiedad id del JSON
         return credentials["project_id"];
     }
+    
 
     public CollectionReference GetCollection(string collectionName)
     {
