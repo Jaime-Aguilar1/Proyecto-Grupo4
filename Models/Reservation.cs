@@ -1,13 +1,18 @@
 ﻿namespace Proyecto_Grupo4.API.Models;
 
-public class Reserva
+public class Reservation
 {
     /**
      * Id: Identificador de la Reserva
      */
 
     public string Id { get; set; } = string.Empty;
-
+    
+    /**
+    * Id usuario
+    */
+    public string UserId { get; set; } = string.Empty;
+    
     /**
      * Guarda el nombre del usuraio que hospeda
      */
@@ -16,13 +21,8 @@ public class Reserva
     /**
      * Contacto del huesped
      */
-    public string Contact { get; set; } = string.Empty;
-
-    /**
-     * Id usuario
-     */
-    public string UserId { get; set; } = string.Empty;
-
+    public string UserContact { get; set; } = string.Empty;
+    
     /**
      * Contabilizar la cantidad de acompañante
      */
@@ -31,29 +31,18 @@ public class Reserva
     /**
      * Identificar nombres de los acompañantes
      */
-    public string NamePart { get; set; } = string.Empty;
-
+    public List<string> NamePart { get; set; } = new List<string>();
+    
     /**
-     * Define la fecha de llegada
-     */
-    public DateTime ArrivalDate { get; set; }
-
-    /**
-     * Define la fecha de salida
-     */
-    public DateTime DepartureDate { get; set; }
+    * Id Room
+    */
+    public string RoomId { get; set; } = string.Empty;
     
 
     /**
-   * Numero de la Habitacion
+   * Número de la Habitacion
    */
     public string NumRoom { get; set; } = string.Empty;
-
-
-    /**
-  * Estado identificar si la habitaion esta Pendiente o reservada
-  */
-    public string State { get; set; } = string.Empty;
 
     /**
      * Define la fecha entrada y de registro de los huespedes en el hotel
@@ -63,7 +52,12 @@ public class Reserva
     /**
      * Define la fecha de  Salida de los huespedes en el hotel
      */
-    public DateTime Checkout { get; set; }
+    public DateTime CheckOut { get; set; }
+    
+    /**
+    * Estado identificar si la habitaion esta Pendiente, Reservada, Check-in, Check-out
+    */
+    public string Status { get; set; } = string.Empty;
 
 
     /**
@@ -76,9 +70,10 @@ public class Reserva
     */
     public double PayReserv { get; set; } 
     
-    /**
-    * Pago para hacer el CheckOut
-    */
-    public double PayFinish { get; set; } 
+    /*
+     * Fecha de creación de la reserva
+     */ 
+    public DateTime CreateReserv { get; set; }
+    
 
 }
