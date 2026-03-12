@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Google.Cloud.Firestore;
 using static FirebaseAdmin.FirebaseApp;
 
@@ -7,36 +6,33 @@ namespace Proyecto.API.Models
 {
    
     [FirestoreData]
-    public class Habitacion
+    public class Usuario
     {
         [FirestoreProperty]
         public string Id { get; set; }
 
         [FirestoreProperty]
-        public string Numero { get; set; }
+        public string Correo { get; set; }
 
         [FirestoreProperty]
-        public string Tipo { get; set; } 
+        public string Nombre { get; set; }
 
         [FirestoreProperty]
-        public int Capacidad { get; set; }
+        public string Rol { get; set; } 
 
         [FirestoreProperty]
-        public decimal TarifaBase { get; set; }
+        public bool YaReservo { get; set; }
 
         [FirestoreProperty]
-        public List<string> Amenidades { get; set; }
+        public string HabitacionReservada { get; set; }
 
         [FirestoreProperty]
-        public string UrlFoto { get; set; }
+        public string FechasReservadas { get; set; }
 
         [FirestoreProperty]
-        public int ContadorReservas { get; set; }
+        public DateTime TimestampReserva { get; set; }
 
         [FirestoreProperty]
         public DateTime FechaCreacion { get; set; }
-
-        [FirestoreProperty]
-        public string CreadoPor { get; set; }
     }
 }
