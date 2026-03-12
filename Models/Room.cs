@@ -25,13 +25,16 @@ namespace Proyecto.API.Models
         public decimal TarifaBase { get; set; }
 
         [FirestoreProperty]
-        public List<string> Amenidades { get; set; }
+        public List<string> Amenidades { get; set; } = new List<string>();
 
         [FirestoreProperty]
         public string UrlFoto { get; set; }
 
         [FirestoreProperty]
         public int ContadorReservas { get; set; }
+       
+         [FirestoreProperty]
+        public string Status { get; set; }
 
         [FirestoreProperty]
         public DateTime FechaCreacion { get; set; }
