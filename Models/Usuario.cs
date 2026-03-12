@@ -16,21 +16,12 @@ namespace Proyecto.API.Models
 
         [FirestoreProperty]
         public string Nombre { get; set; }
+       
+        [FirestoreProperty]
+        public string Costrasena { get; set; }
 
         [FirestoreProperty]
         public string Rol { get; set; } 
-
-        [FirestoreProperty]
-        public bool YaReservo { get; set; }
-
-        [FirestoreProperty]
-        public string HabitacionReservada { get; set; }
-
-        [FirestoreProperty]
-        public string FechasReservadas { get; set; }
-
-        [FirestoreProperty]
-        public DateTime TimestampReserva { get; set; }
 
         [FirestoreProperty]
         public DateTime FechaCreacion { get; set; }
