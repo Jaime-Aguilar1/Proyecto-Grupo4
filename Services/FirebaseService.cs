@@ -5,7 +5,7 @@ using Google.Cloud.Firestore.V1;
 using Grpc.Auth;
 using Newtonsoft.Json;
 
-namespace Proyecto;
+namespace Proyecto_Grupo4.API.Services;
 
     public class FirebaseService
 {
@@ -40,7 +40,7 @@ namespace Proyecto;
             var credentialsPath = Path.Combine(
                 AppContext.BaseDirectory,
                 "Config",
-                "bd-proyecto-grupo4.json"
+                "bd-proyecto-grupo4-firebase-adminsdk-fbsvc-4c08f2d634.json"
             );
             
             /*

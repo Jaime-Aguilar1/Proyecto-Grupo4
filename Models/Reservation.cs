@@ -43,6 +43,12 @@ public class Reservation
    * Número de la Habitacion
    */
     public string NumRoom { get; set; } = string.Empty;
+    
+    /**
+   * Tipo de Habitacion Habitacion
+   */
+    public string TypeRoom { get; set; } = string.Empty;
+    
 
     /**
      * Define la fecha entrada y de registro de los huespedes en el hotel
@@ -55,25 +61,30 @@ public class Reservation
     public DateTime CheckOut { get; set; }
     
     /**
+     * Cantidad de noches a hospedarse
+     */
+    public int NumNight{ get; set; }
+    
+    /**
     * Estado identificar si la habitaion esta Pendiente, Reservada, Check-in, Check-out
     */
-    public string Status { get; set; } = string.Empty;
+    public string Status { get; set; } = "Pendiente";
 
 
     /**
      * Total a pagar mas ISV de la Reserva
      */
-    public double TotalIsv { get; set; }
+    public decimal TotalIsv { get; set; }
     
     /**
     * Pago para reservar
     */
-    public double PayReserv { get; set; } 
+    public decimal PayReserv { get; set; } 
     
     /*
      * Fecha de creación de la reserva
-     */ 
-    public DateTime CreateReserv { get; set; }
-    
+     */
+    public DateTime CreateReserv { get; set; } = DateTime.UtcNow;
+
 
 }
