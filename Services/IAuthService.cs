@@ -1,5 +1,6 @@
 ﻿using Proyecto_Grupo4.API.DTOs;
-using Proyecto.API.Models;
+using Proyecto_Grupo4.API.Models;
+
 namespace Proyecto_Grupo4.API.Services;
 
 
@@ -12,7 +13,7 @@ public interface IAuthService
      * 3. Guardar el documento en la colección "Usuarios"
      * * Retorna: El usuario creado (modelo Usuario)
      */
-    Task<Usuario> Register(RegisterDto registerDto);
+    Task<User> Register(RegisterDto registerDto);
 
     /**
      * Login:
@@ -26,7 +27,7 @@ public interface IAuthService
     /**
      * Obtiene los datos de un usuario específico por su ID de documento
      */
-    Task<Usuario?> GetUserById(string userId);
+    Task<User?> GetUserById(string userId);
 
     /**
      * Valida si un token JWT recibido es legítimo
@@ -36,5 +37,5 @@ public interface IAuthService
     /**
      * Genera la cadena del token JWT basada en los datos del usuario y su rol (huésped/gerente)
      */
-    string GenerateJwtToken(Usuario user);
+    string GenerateJwtToken(User user);
 }

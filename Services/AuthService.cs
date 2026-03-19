@@ -1,10 +1,11 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Google.Cloud.Firestore;
 using Microsoft.IdentityModel.Tokens;
 using Proyecto_Grupo4.API.DTOs;
-using Proyecto.API.Models; 
+using Proyecto_Grupo4.API.Models;
 using Proyecto; 
 
 namespace Proyecto_Grupo4.API.Services;
@@ -24,7 +25,7 @@ public class AuthService : IAuthService
         _usuariosCollection = _firebaseService.GetCollection("Usuarios");
     }
 
-    public async Task<Usuario> Register(RegisterDto registerDto)
+    public async Task<User> Register(RegisterDto registerDto)
     {
         try
         {
@@ -44,7 +45,7 @@ public class AuthService : IAuthService
             }
 
             // 2. Crear el objeto Usuario adaptado a tu modelo Firestore
-            var nuevoUsuario = new Usuario
+            var nuevoUsuario = new User
             {
                 Id = Guid.NewGuid().ToString(),
                 Nombre = registerDto.FullName,
@@ -65,7 +66,8 @@ public class AuthService : IAuthService
             throw;
         }
     }
-
+    
+    
     public async Task<(UserDto user, string token)> Login(LoginDto loginDto)
     {
         try
@@ -81,7 +83,7 @@ public class AuthService : IAuthService
             }
 
             var userDoc = query.Documents[0];
-            var usuario = userDoc.ConvertTo<Usuario>();
+            var usuario = userDoc.ConvertTo<User>();
 
             // 2. Validar contraseña
             if (usuario.Costrasena != loginDto.Password)
@@ -139,13 +141,13 @@ public class AuthService : IAuthService
         }
     }
 
-    public async Task<Usuario?> GetUserById(string userId)
+    public async Task<User?> GetUserById(string userId)
     {
         var doc = await _usuariosCollection.Document(userId).GetSnapshotAsync();
-        return doc.Exists ? doc.ConvertTo<Usuario>() : null;
+        return doc.Exists ? doc.ConvertTo<User>() : null;
     }
 
-    public string GenerateJwtToken(Usuario user)
+    public string GenerateJwtToken(User user)
     {
         var secretKey = _configuration["Jwt:SecretKey"];
         var issuer = _configuration["Jwt:Issuer"];

@@ -1,12 +1,10 @@
-﻿using System;
-using Google.Cloud.Firestore;
-using static FirebaseAdmin.FirebaseApp;
+﻿using Google.Cloud.Firestore;
 
-namespace Proyecto.API.Models
+namespace Proyecto_Grupo4.API.Models
 {
    
     [FirestoreData]
-    public class Usuario
+    public class User
     {
         [FirestoreProperty]
         public string Id { get; set; }

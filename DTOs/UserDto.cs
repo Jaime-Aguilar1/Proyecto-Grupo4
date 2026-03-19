@@ -1,6 +1,5 @@
 ﻿namespace Proyecto_Grupo4.API.DTOs;
 
-
 /// UserDto es lo que se envía hacia el Front-End cuando se solicita info del usuario.
 
 public class UserDto

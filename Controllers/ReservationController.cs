@@ -1,10 +1,11 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Proyecto_Grupo4.API.DTOs;
 using Proyecto_Grupo4.API.Services;
 
-namespace Proyecto_Grupo4.API.Controllers;
+namespace Proyecto.API.Controllers;
 
-[ApiController]
+
+    [ApiController]
 [Route("api/[controller]")]
 public class ReservationsController : ControllerBase
 {
@@ -34,7 +35,7 @@ public class ReservationsController : ControllerBase
     }
 
     // GET: api/reservations/user/{userId}/exists
-    [cite_start]// REQUERIMIENTO: Validar si el usuario ya reservó [cite: 51, 122]
+    //  Validar si el usuario ya reservó 
     [HttpGet("user/{userId}/exists")]
     public async Task<ActionResult<ExistReservationDto>> CheckExists(string userId)
     {
@@ -43,7 +44,7 @@ public class ReservationsController : ControllerBase
     }
 
     // POST: api/reservations/calculate
-    [cite_start]// REQUERIMIENTO: Visualizar costo total con impuestos [cite: 49]
+    // Visualizar costo total con impuestos [cite: 49]
     [HttpPost("calculate")]
     public async Task<ActionResult<BillReservationDto>> Calculate([FromBody] CalculateRequest request)
     {
@@ -60,19 +61,19 @@ public class ReservationsController : ControllerBase
     }
 
     // POST: api/reservations
-    [cite_start]// REQUERIMIENTO: Confirmación exitosa y validación única [cite: 48, 52]
+   //  Confirmación exitosa y validación única [cite: 48, 52]
     [HttpPost]
     public async Task<ActionResult<ConfirmReservationDto>> Create([FromBody] CreateReservationDto dto)
     {
         try
         {
-            [cite_start]// El servicio ya maneja la transacción atómica y la validación de doble reserva [cite: 125, 126]
+            // El servicio ya maneja la transacción atómica y la validación de doble reserva
             var result = await _reservationService.CreateReservation(dto, dto.UserId);
             return CreatedAtAction(nameof(GetById), new { id = result.ReservationId }, result);
         }
         catch (Exception ex)
         {
-            [cite_start]// Manejo de error si el usuario ya tiene reserva (Escenario 2) [cite: 176, 179]
+            // Manejo de error si el usuario ya tiene reserva 
             return BadRequest(new { message = ex.Message });
         }
     }

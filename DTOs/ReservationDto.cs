@@ -44,6 +44,11 @@ public class ReservationDto
    * Número de la Habitacion
    */
     public string NumRoom { get; set; } = string.Empty;
+    
+    /**
+   * Tipo de Habitacion Habitacion
+   */
+    public string TypeRoom { get; set; } = string.Empty;
 
     /**
      * Define la fecha entrada y de registro de los huespedes en el hotel
@@ -56,19 +61,24 @@ public class ReservationDto
     public DateTime CheckOut { get; set; }
     
     /**
+     * Cantidad de noches a hospedarse
+     */
+    public int NumNight{ get; set; }
+    
+    /**
     * Estado identificar si la habitaion esta Pendiente, Reservada, Check-in, Check-out
     */
-    public string Status { get; set; } = string.Empty;
+    public string Status { get; set; } = "Pendiente";
     
     /**
      * Total a pagar mas ISV de la Reserva
      */
-    public double TotalIsv { get; set; }
+    public decimal TotalIsv { get; set; }
     
     /**
     * Pago para reservar
     */
-    public double PayReserv { get; set; } 
+    public decimal PayReserv { get; set; } 
     }
 
 public class CreateReservationDto
@@ -85,12 +95,14 @@ public class CreateReservationDto
      */
     public string RoomId { get; set; } = string.Empty;
     public string NumRoom { get; set; } = string.Empty;
+    public string TypeRoom { get; set; } = string.Empty;
     
     /*
      * Establecer fechas de la reserva
      */
     public DateTime CheckIn { get; set; }
     public DateTime CheckOut { get; set; }
+    public int NumNight{ get; set; }
     
     /*
      * Establecer los acompañantes del huesped
@@ -116,21 +128,22 @@ public class ConfirmReservationDto
      */
     public DateTime CheckIn { get; set; }
     public DateTime CheckOut { get; set; }
+    public int NumNight{ get; set; }
     
     /**
      * Total a pagar mas ISV de la Reserva
      */
-    public double TotalIsv { get; set; }
+    public decimal TotalIsv { get; set; }
     
     /**
     * Pago para reservar
     */
-    public double PayReserv { get; set; }
+    public decimal PayReserv { get; set; }
     
     /**
     * Estado identificar si la habitaion esta Pendiente, Reservada, Check-in, Check-out
     */
-    public string Status { get; set; } = string.Empty;
+    public string Status { get; set; } = "Pendiente";
 }
 
 public class ExistReservationDto
@@ -154,7 +167,7 @@ public class ExistReservationDto
     /*
     * Válida el estado de la reserva
     */
-    public string Status { get; set; } = string.Empty;
+    public string Status { get; set; } = "Reserv";
 }
 
 public  class BillReservationDto
@@ -168,30 +181,36 @@ public  class BillReservationDto
     /*
      * Cantidad de noches reservadas
      */
-    public int NightsReserv { get; set; }
+    public int NumNight{ get; set; }
     
     /*
      * Precio base por noche
      */
-    public double NightPrice { get; set; }
+    public decimal NightPrice { get; set; }
 
     /*
      * Multiplicacion de la cantidad de noches por el precio base
      */
-    public double SubTotal { get; set; }
+    public decimal SubTotal { get; set; }
     
     /*
      * Este sera el 15%
      */
-    public double ISV { get; set; }
+    public decimal ISV { get; set; }
 
     /*
      * Total a pagar mas ISV de la Reserva
      */
-    public double TotalIsv { get; set; }
+    public decimal TotalIsv { get; set; }
 
     /*
      * Pago para reservar
      */
-    public double PayReserv { get; set; } 
+    public decimal PayReserv { get; set; } 
+    
+    /*
+     * Pago para terminar reserva
+     */
+    public decimal TotalPayReserv { get; set; } 
+    
 }
